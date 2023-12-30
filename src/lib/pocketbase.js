@@ -2,7 +2,8 @@ import PocketBase from 'pocketbase';
 import { writable } from 'svelte/store';
 import { PUBLIC_POCKETBASE_URL } from '$env/static/public'
 
-export const pb = new PocketBase(PUBLIC_POCKETBASE_URL);
+const url = 'https://choompos.pockethost.io/'
+export const pb = new PocketBase(url)
 
 export const curr_user = writable(pb.authStore.model);
 
