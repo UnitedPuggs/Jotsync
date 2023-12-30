@@ -90,7 +90,7 @@
     <span class="text-center">Shareable Link</span>
     <span class="text-center btn variant-filled w-fit mx-auto font-bold">
         <button 
-        use:clipboard={`https://jotsync.vercel.app/${note.id}/add`} 
+        use:clipboard={`https://jotsync.vercel.app/notes/${note.id}/add`} 
         on:click={trigger_toast}
         >
         jotsync.vercel.app/{note.id}/add
