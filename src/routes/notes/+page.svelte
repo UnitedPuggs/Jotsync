@@ -7,7 +7,7 @@
 
     onMount(async() => {
         notes = await pb.collection('notes').getFullList({
-            filter: `user.id="${$curr_user.id}"`,
+            filter: `user.id ?= "${$curr_user.id}"`,
             sort: '-created',
         })
     });

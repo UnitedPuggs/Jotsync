@@ -6,6 +6,7 @@
 
     let title;
     $: note = "";
+    let timer;
 
     const toast_store = getToastStore();
 
@@ -58,10 +59,25 @@
     async function trigger_toast() {
         const t = {
             message: "Copied link!",
-            timeout: 3000
+            timeout: 3000,
+            background: 'variant-filled'
         };
 
         toast_store.trigger(t);
+    }
+
+    const debounce_title = () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            update_title();
+        }, 1000);
+    }
+
+    const debounce_content = () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            update_content();
+        }, 1000);
     }
 </script>
 
@@ -71,9 +87,17 @@
 
 <Toast />
 <div class="flex flex-col gap-2 h-full p-4">
-    <span class="text-center"><button use:clipboard={`url/${note.id}/add`} on:click={trigger_toast}>url/{note.id}/add</button></span>
-    <input type="text" class="bg-inherit w-full text-3xl font-bold" bind:value={title} on:input={update_title} placeholder="title here">
+    <span class="text-center">Shareable Link</span>
+    <span class="text-center btn variant-filled w-fit mx-auto font-bold">
+        <button 
+        use:clipboard={`https://jotsync.vercel.app/${note.id}/add`} 
+        on:click={trigger_toast}
+        >
+        jotsync.vercel.app/{note.id}/add
+        </button>
+    </span>
+    <input type="text" class="bg-inherit w-full text-3xl font-bold" bind:value={title} on:input={debounce_title} placeholder="title here">
     <p class="text-sm">created {parse_date(note.created)}</p>
     <hr class="opacity-75">
-    <textarea class="bg-inherit w-full h-full" bind:value={note.content} on:input={update_content} placeholder="notes here"></textarea>
+    <textarea class="bg-inherit w-full h-full" bind:value={note.content} on:input={debounce_content} placeholder="notes here"></textarea>
 </div>
