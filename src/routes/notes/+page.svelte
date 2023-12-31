@@ -3,10 +3,6 @@
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
 
-    export let data;
-
-    console.log(data);
-
     let notes = [];
 
     onMount(async() => {
