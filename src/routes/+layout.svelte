@@ -1,10 +1,13 @@
 <script>
 	import '../app.postcss';
-	import { AppShell, TabAnchor, TabGroup, LightSwitch, initializeStores } from '@skeletonlabs/skeleton'
+	import { AppShell, TabAnchor, TabGroup, LightSwitch, initializeStores, getToastStore } from '@skeletonlabs/skeleton'
 	import { pb, curr_user } from '$lib/pocketbase';
+	import { goto } from '$app/navigation'
+
 
 	async function logout() {
 		pb.authStore.clear();
+		goto('/')
 	}
 
 	initializeStores();
@@ -17,8 +20,11 @@
 		active="variant-filled-primary"
 		hover="hover:variant-soft-tertiary"
 		rounded=""
-		class="font-bold text-2xl w-full"
+		class="font-bold lg:text-2xl w-full"
 		>
+			<TabAnchor href="/">
+				Jotsync
+			</TabAnchor>
 			<TabAnchor href="/notes">
 				Notes
 			</TabAnchor>

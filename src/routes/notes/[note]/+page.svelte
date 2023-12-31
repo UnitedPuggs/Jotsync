@@ -14,9 +14,7 @@
         const note_record = await pb.collection('notes').getOne(`${$page.params.note}`);
         note = note_record;
         title = note.title;
-
-        console.log(note)
-
+        
         pb.collection('notes').subscribe(`${note.id}`, async({ action, record }) => {
             if(action === 'update') {
                 if(title != record.title) {
