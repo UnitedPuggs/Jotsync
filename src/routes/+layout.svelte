@@ -23,7 +23,10 @@
 		class="font-bold lg:text-2xl w-full"
 		>
 			<TabAnchor href="/">
-				Jotsync
+				<div class="flex justify-center items-center">
+					<span>Jotsync</span>
+					<img src="/assets/logo.png" alt="Jotsync logo" class="w-12 drop-shadow-md dark:drop-shadow-none"/>
+				</div>
 			</TabAnchor>
 			<TabAnchor href="/notes">
 				Notes

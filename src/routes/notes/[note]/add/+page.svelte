@@ -8,7 +8,7 @@
     let user_arr = [];
     let user_set;
 
-    //this shit is downright atrocious
+    //this shit is downright atrocious, need to figure out how to make server-side pb client
     onMount(async() => {
         if(!$curr_user) {
             if(browser) {

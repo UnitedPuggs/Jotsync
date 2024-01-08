@@ -5,22 +5,30 @@
 
     async function login_with_discord() {
         const authData = await pb.collection('users').authWithOAuth2({ provider: 'discord' });
+        //Do you think God ever looks at his creations and weeps?
+        //I know I fucking sob when I see mine
         if(browser) {
             let x = document.cookie;
-            if(x)
+            if(x) {
+                document.cookie = "'';Path=/;Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
                 goto(x);
-            else
+            }
+            else {
                 goto('/')
+            }
         }
     }
     async function login_with_google() {
         const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' });
         if(browser) {
             let x = document.cookie;
-            if(x)
+            if(x) {
+                document.cookie = "'';Path=/;Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
                 goto(x);
-            else
+            }
+            else {
                 goto('/')
+            }
         }
     }
 </script>

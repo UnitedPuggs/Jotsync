@@ -68,14 +68,14 @@
         clearTimeout(timer);
         timer = setTimeout(() => {
             update_title();
-        }, 1000);
+        }, 500);
     }
 
     const debounce_content = () => {
         clearTimeout(timer);
         timer = setTimeout(() => {
             update_content();
-        }, 1000);
+        }, 500);
     }
 </script>
 
